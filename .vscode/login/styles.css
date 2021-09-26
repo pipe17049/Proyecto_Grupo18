@@ -1,0 +1,13 @@
+html,body{
+
+    background-image: url("https://images2.alphacoders.com/718/718914.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+.container{
+
+    height: 100vh;
+    align-content: center;
+}
