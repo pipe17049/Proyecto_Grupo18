@@ -69,13 +69,9 @@ const enviar = () => {
         salida.push(response[i].value);
     }
 
+    const [id, description, valor, state] = salida;
 
-    Productos.push({
-        id: salida[0],
-        description: salida[1],
-        valor: salida[2],
-        state: salida[3]
-    })
+    Productos.push({ id, description, valor, state })
 
 }
 
@@ -84,6 +80,37 @@ const showProducts = () => {
     idDivTable.innerHTML = ""
     let productos = arrayProductos;
     let row = "";
+
+    createTable();
+
+    let contador = 0;
+    const divTable = document.querySelector('#tableBody');
+
+
+
+    const products = productos.map((producto) => {
+
+
+        row = divTable.insertRow(contador);
+        contador++;
+        for (let i = 0; i < 4; i++) {
+            i == 0 ? row.insertCell(i).innerText = producto.id :
+                i == 1 ? row.insertCell(i).innerText = producto.description :
+                    i == 2 ? row.insertCell(i).innerText = producto.valor :
+                        row.insertCell(i).innerText = producto.state;
+
+
+        }
+
+    })
+
+
+
+
+}
+
+const createTable = () => {
+
     const elemTable = document.createElement("table");
     const elemThead = document.createElement("thead");
     const elemTbody = document.createElement("tbody");
@@ -112,33 +139,62 @@ const showProducts = () => {
     elemTable.appendChild(elemTbody)
     elemTable.className = "table"
     idDivTable.append(elemTable)
+}
+
+const searchProducts = () => {
 
 
-    let contador = 0;
+
+
+    idDivTable.innerHTML = ""
+
+    createTable()
+
     const divTable = document.querySelector('#tableBody');
 
 
+    const elemSearchInput = document.createElement("input")
 
-    const products = productos.map((producto) => {
-
-
-        row = divTable.insertRow(contador);
-        contador++;
-        for (let i = 0; i < 4; i++) {
-            i == 0 ? row.insertCell(i).innerText = producto.id :
-                i == 1 ? row.insertCell(i).innerText = producto.description :
-                    i == 2 ? row.insertCell(i).innerText = producto.valor :
-                        row.insertCell(i).innerText = producto.state;
+    elemSearchInput.setAttribute("type", arrayElementsTable[0][1]);
+    elemSearchInput.setAttribute("id", "input-search")
 
 
-        }
+    const elemSearchBoton = document.createElement("button")
+    elemSearchBoton.className = "btn btn-primary"
+    elemSearchBoton.innerHTML = "Buscar"
 
+    elemSearchBoton.addEventListener('click', () => {
+        let productos = arrayProductos;
+        let idTableClass = document.querySelector(".table")
+        const response = document.querySelector("#input-search");
+        console.log(response.value)
+        let row = idTableClass.insertRow();
+        let salidaProducto = productos.findIndex(producto => producto.id == response.value)
+        console.log(salidaProducto)
+        let ceil1 = row.insertCell(0);
+        ceil1.innerHTML = productos[salidaProducto].id;
+        let ceil2 = row.insertCell(1)
+        ceil2.innerText = productos[salidaProducto].description;
+        let ceil3 = row.insertCell(2)
+        ceil3.innerText = productos[salidaProducto].valor;
+        let ceil4 = row.insertCell(3)
+        ceil4.innerText = productos[salidaProducto].state;
+        row.appendChild(ceil1)
+        row.appendChild(ceil2)
+        row.appendChild(ceil3)
+        row.appendChild(ceil4)
+        idTableClass.appendChild(row)
+        //divTable.append(idTableClass)
 
     })
 
 
+    //idDivTable.append(divTable)
+    idDivTable.append(elemSearchInput)
+    idDivTable.append(elemSearchBoton)
 
+
+    // let salidaProducto = productos.find(x => x, id ===)
 
 }
-
 
