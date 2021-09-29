@@ -198,3 +198,8 @@ const searchProducts = () => {
 
 }
 
+const updateProducts = () => {
+
+
+}
+
