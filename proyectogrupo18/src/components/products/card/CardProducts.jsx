@@ -4,14 +4,17 @@ const CardProducts = ({ producto }) => {
 
     return (
         <>
-            <div className="card col-6 col-sm-5 col-md-4 col-lg-3 col-xl-3 col-xxl-2">
-
-                <div className="card-body">
-                    <h5 className="card-title">{producto.id} </h5>
-                    <p className="card-text">{producto.description} </p>
-                    <p className="card-text"><small className="text-muted">{producto.value} </small></p>
-                </div>
-            </div>
+            <tr>
+                <th scope="row">{producto.id} </th>
+                <td>{producto.description}</td>
+                <td>{producto.value}</td>
+                <td>{producto.state ? "IN STOCK" : "OUT STOCK"}</td>
+                <td>
+                    <button type="button" className="btn btn-primary"><i className="far fa-eye"></i></button>
+                    <button type="button" className="btn btn-success"><i className="fas fa-edit"></i></button>
+                    <button type="button" className="btn btn-danger"><i className="fas fa-trash-alt"></i></button>
+                </td>
+            </tr>
         </>
     )
 }

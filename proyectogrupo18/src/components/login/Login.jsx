@@ -32,19 +32,19 @@ const Login = () => {
 
                     <div className="card-body">
                         <form action="#">
-                            <label for="email">Ingrese su email</label>
+                            <label forhtml="email">Ingrese su email</label>
                             <div className="input-group form-group">
 
                                 <input onChange={changeField} value={formValues.username} name="username" type="email" className="form-control" placeholder="username" />
 
                             </div>
-                            <label for="password">Ingrese su Password</label>
+                            <label forhtml="password">Ingrese su Password</label>
                             <div className="input-group form-group">
                                 <input onChange={changeField} value={formValues.password} name="password" type="password" className="form-control" placeholder="password" />
                             </div>
                             <div className="form-check">
                                 <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                <label className="form-check-label" for="flexCheckDefault">
+                                <label className="form-check-label" forhtml="flexCheckDefault">
                                     Default checkbox
                                 </label>
                             </div>
